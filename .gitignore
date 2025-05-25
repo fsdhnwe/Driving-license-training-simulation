@@ -73,3 +73,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Samples/
+Assets/Simple Roads/
+Assets/Settings/Editor/RoadSystemSettings.asset
+Assets/Samples.meta
+Assets/Simple Roads.meta
+Assets/Settings/Editor/RoadSystemSettings.asset.meta
+Packages/com.barmetler.roadsystem/
