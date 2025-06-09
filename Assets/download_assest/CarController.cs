@@ -22,12 +22,18 @@ public class RealisticCarController : MonoBehaviour
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
 
+    [Header("Camera Controls")]
+    public float mouseSensitivity = 2f;
+    private float rotationX = 0f;
+    private float rotationY = 0f;
+
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0); // 降低重心
+        Cursor.lockState=CursorLockMode.Locked;
 
         SetupWheelFriction(wheelFL);
         SetupWheelFriction(wheelFR);
@@ -57,6 +63,19 @@ public class RealisticCarController : MonoBehaviour
                 SwitchToThirdPerson();
             else
                 SwitchToFirstPerson();
+        }
+
+        // 滑鼠控制相機旋轉 (僅在第一人稱)
+        if (firstPersonCamera.enabled)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+            rotationY += mouseX;
+            rotationX -= mouseY;
+            rotationX = Mathf.Clamp(rotationX, -60f, 60f); // 垂直視角限制
+
+            firstPersonCamera.transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0);
         }
     }
 

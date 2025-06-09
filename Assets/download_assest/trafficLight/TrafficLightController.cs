@@ -23,17 +23,13 @@ public class TrafficLightController : MonoBehaviour
             SetLightState(false, true, false);
             yield return new WaitForSeconds(3f);
 
-            // 綠燈亮
-            SetLightState(false, false, true);
-            yield return new WaitForSeconds(10f);
-
-            // 黃燈亮
-            SetLightState(false, true, false);
-            yield return new WaitForSeconds(3f);
-
             // 紅燈亮
             SetLightState(true, false, false);
             yield return new WaitForSeconds(5f);
+
+            // 綠燈亮
+            SetLightState(false, false, true);
+            yield return new WaitForSeconds(10f);
         }
     }
 
